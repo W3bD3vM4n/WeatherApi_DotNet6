@@ -3,6 +3,7 @@ using WeatherApi.Services;
 using Newtonsoft.Json;
 using System.Text.Json.Nodes;
 using WeatherApi.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace WeatherApi.Controllers
 {
@@ -10,21 +11,11 @@ namespace WeatherApi.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        //[HttpGet]
-        //public async Task<ActionResult<WeatherUnlockedApiResponseModel>> ObtenerDatosApiUno()
-        //{
-        //    WeatherService weatherService = new WeatherService();
-        //    string response = await weatherService.ObtenerDatosApiUno();
-
-        //    var jsonObject = JsonConvert.DeserializeObject<WeatherUnlockedApiResponseModel>(response);
-        //    return jsonObject;
-        //}
-
         [HttpGet]
-        public async Task<ActionResult<TomorrowApiResponseModel>> ObtenerDatosApiDos()
+        public async Task<ActionResult<TomorrowApiResponseModel>> ObtenerClimaPorLocalizacion(string location)
         {
             WeatherService weatherService = new WeatherService();
-            string response = await weatherService.ObtenerDatosApiDos();
+            string response = await weatherService.ObtenerClimaPorLocalizacion(location);
 
             var jsonObject = JsonConvert.DeserializeObject<TomorrowApiResponseModel>(response);
             return jsonObject;

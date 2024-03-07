@@ -9,5 +9,8 @@ namespace WeatherApi.Models
 
         [JsonProperty("lon")]
         public decimal Longitude { get; set; }
+
+        [JsonProperty("name")]
+        public string Name { get; set; }
     }
 }
